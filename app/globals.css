@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #f8fafd;
+  --fg: #0a1628;
+  --fg-muted: #58657a;
+  --border: #e4eaf2;
+  --card: #ffffff;
+}
+
+.dark {
+  --bg: #080e1a;
+  --bg-subtle: #0d1525;
+  --fg: #f0f4fa;
+  --fg-muted: #9ca8bc;
+  --border: #1e2a3f;
+  --card: #0f1829;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background-color: #0165ff;
+  color: white;
+}
+
+/* Custom slim scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 999px;
+}
+
+/* Visible, accessible focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid #0165ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.container-lynk {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+}
+
+.card-surface {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+}
+
+.text-muted {
+  color: var(--fg-muted);
+}
+
+.bg-subtle {
+  background-color: var(--bg-subtle);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #073375 0%, #0165ff 55%, #018cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #cfe2ff 0%, #4d9bff 55%, #7fd0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-brand {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:bg-brand-navy hover:shadow-lg active:scale-[0.98];
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-transparent px-6 py-3 text-sm font-semibold text-ink-900 transition-all duration-200 hover:border-brand-blue hover:text-brand-blue active:scale-[0.98] dark:border-white/15 dark:text-white;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  background: #0165ff;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+}

@@ -1,0 +1,58 @@
+import { NextRequest, NextResponse } from "next/server";
+import { resend, LEAD_NOTIFICATION_TO, MAIL_FROM } from "@/lib/resend";
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { name, email, phone, company, honeypot } = body ?? {};
+
+    // Basic spam trap — honeypot field should always be empty for real users.
+    if (honeypot) {
+      return NextResponse.json({ ok: true });
+    }
+
+    if (!email || typeof email !== "string" || !/^\S+@\S+\.\S+$/.test(email)) {
+      return NextResponse.json({ ok: false, error: "A valid email is required." }, { status: 400 });
+    }
+
+    await resend.emails.send({
+      from: MAIL_FROM,
+      to: LEAD_NOTIFICATION_TO,
+      reply_to: email,
+      subject: `New free audit request — ${name || "Website visitor"}`,
+      html: `
+        <h2>New lead from the "Free Risk Audit" pop-up</h2>
+        <p><strong>Name:</strong> ${escapeHtml(name || "N/A")}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(phone || "N/A")}</p>
+        <p><strong>Company:</strong> ${escapeHtml(company || "N/A")}</p>
+      `,
+    });
+
+    // Confirmation email to the lead
+    await resend.emails.send({
+      from: MAIL_FROM,
+      to: email,
+      subject: "We received your request — Bravelynk Digital Solutions",
+      html: `
+        <p>Hi ${escapeHtml(name || "there")},</p>
+        <p>Thanks for requesting your free Risk & Readiness Audit from Bravelynk Digital Solutions Limited. A member of our team will reach out within one business day.</p>
+        <p>In the meantime, feel free to reply to this email with any details about your systems or concerns.</p>
+        <p>— The Bravelynk Team</p>
+      `,
+    });
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("Lead API error:", error);
+    return NextResponse.json({ ok: false, error: "Something went wrong. Please try again." }, { status: 500 });
+  }
+}
+
+function escapeHtml(input: string) {
+  return String(input)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
