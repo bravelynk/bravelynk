@@ -25,18 +25,24 @@ export default function ComingSoon() {
         setStatus("success");
         setEmail("");
       } else {
-        // Fallback to local success if the API route is not yet fully configured
+        if (process.env.NODE_ENV === "development") {
+          setTimeout(() => {
+            setStatus("success");
+            setEmail("");
+          }, 1000);
+        } else {
+          setStatus("error");
+        }
+      }
+    } catch (err) {
+      if (process.env.NODE_ENV === "development") {
         setTimeout(() => {
           setStatus("success");
           setEmail("");
         }, 1000);
+      } else {
+        setStatus("error");
       }
-    } catch (err) {
-      // Fallback to local success for local testing/preview
-      setTimeout(() => {
-        setStatus("success");
-        setEmail("");
-      }, 1000);
     }
   };
 
@@ -128,6 +134,16 @@ export default function ComingSoon() {
               </form>
             )}
           </AnimatePresence>
+          {status === "error" && (
+            <motion.p
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-rose-400 text-xs mt-3.5 flex items-center justify-center gap-1.5"
+            >
+              <AlertCircle size={13} />
+              <span>Something went wrong. Please try again.</span>
+            </motion.p>
+          )}
         </motion.div>
       </div>
 
