@@ -44,15 +44,17 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const isComingSoon = process.env.NEXT_PUBLIC_COMING_SOON === "true";
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased" id="top">
         <ThemeProvider>
           <BookingProvider>
-            <Navbar />
+            {!isComingSoon && <Navbar />}
             <main id="main-content">{children}</main>
-            <Footer />
-            <FearPopup />
+            {!isComingSoon && <Footer />}
+            {!isComingSoon && <FearPopup />}
           </BookingProvider>
         </ThemeProvider>
       </body>
