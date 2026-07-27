@@ -79,7 +79,7 @@ export default function ComingSoon() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="text-slate-400 text-sm sm:text-base max-w-lg mx-auto leading-relaxed"
         >
-          Be the first to know when we launch. Join our community of early supporters and get exclusive updates.
+          We&apos;re building the next chapter of Digital Solutions — a technology built to save costs and maximize security for Nigerian businesses.
         </motion.p>
 
         {/* Animated Form Area */}
