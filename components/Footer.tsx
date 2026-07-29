@@ -44,6 +44,7 @@ export default function Footer() {
             {[
               ["/why-choose-us", "Why Us"],
               ["/process", "Our Process"],
+              ["/blog", "Blog Insights"],
               ["/#faq", "FAQ"],
               ["/contact", "Contact"],
             ].map(([href, label]) => (
