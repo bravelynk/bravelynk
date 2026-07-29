@@ -115,7 +115,7 @@ const faqs = [
   },
   {
     q: "Do you work with businesses outside Lagos?",
-    a: "Yes. While we're based in Agege, Lagos, we deliver software development and IT consultancy remotely for clients across Nigeria and the diaspora. Hardware installation is scheduled around your location.",
+    a: "Yes. While we're based at 16, Ishola Yusuf Street, Lagos, we deliver software development and IT consultancy remotely for clients across Nigeria and the diaspora. Hardware installation is scheduled around your location.",
   },
   {
     q: "What does the free Risk & Readiness Audit include?",
@@ -221,7 +221,7 @@ export default function Home() {
             </h1>
 
             <p className="text-white/80 mt-7 max-w-xl text-base leading-relaxed sm:text-lg">
-              A partnership proposal for growth-minded businesses. We design and build the custom software, infrastructure, and digital strategies required to compete.
+              We design and build the custom software, infrastructure, and digital strategies required to compete.
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">

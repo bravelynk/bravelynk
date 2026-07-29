@@ -6,7 +6,7 @@ import { Resend } from "resend";
 // is configured — API calls will fail with a clear error until it's set.
 export const resend = new Resend(process.env.RESEND_API_KEY || "re_placeholder_set_me");
 
-export const LEAD_NOTIFICATION_TO = process.env.LEAD_NOTIFICATION_TO || "info@bravelynk.com";
+export const LEAD_NOTIFICATION_TO = process.env.LEAD_NOTIFICATION_TO || "bravelynk@gmail.com";
 
 // Use a verified sending domain in Resend before going live.
 // Until a custom domain is verified, Resend only allows sending from onboarding@resend.dev.

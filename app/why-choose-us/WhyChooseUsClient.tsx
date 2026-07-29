@@ -89,7 +89,7 @@ export default function WhyChooseUsClient() {
           <div className="lg:col-span-7 space-y-6">
             <h2 className="font-display text-3xl font-bold tracking-tight">Who We Are</h2>
             <p className="text-muted leading-relaxed">
-              Bravelynk Digital Solutions Limited (RC: 9270501) is a registered Nigerian technology company based in Agege, Lagos. We design and build the software, infrastructure, and digital strategy that businesses need to compete — with the accountability of a real, local, registered partner.
+              Bravelynk Digital Solutions Limited (RC: 9270501) is a registered Nigerian technology company based at 16, Ishola Yusuf Street, Lagos. We design and build the software, infrastructure, and digital strategy that businesses need to compete — with the accountability of a real, local, registered partner.
             </p>
             <p className="text-muted leading-relaxed">
               We&apos;ve seen too many businesses pay for software that never fit, or infrastructure that broke down the moment it mattered. Bravelynk exists to close that gap — with technology that&apos;s pragmatic, honest, and built to last.
