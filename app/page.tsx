@@ -31,6 +31,7 @@ import {
   Phone,
   AlertTriangle,
   Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ContactForm from "@/components/ContactForm";
@@ -189,12 +190,25 @@ export default function Home() {
     <>
       {/* ── Hero: Bravelynks ─────────────────────────────────── */}
       <section className="relative overflow-hidden pb-20 pt-40 sm:pb-28 sm:pt-48 bg-brand-navy text-white">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
+        >
+          <source src="/assets/here-section-background.mp4" type="video/mp4" />
+        </video>
+        {/* Dark Overlay to make text readable */}
+        <div className="absolute inset-0 bg-brand-navy/75 mix-blend-multiply z-0 pointer-events-none" />
+
         <div
-          className="pointer-events-none absolute -top-40 right-[-10%] h-[420px] w-[420px] rounded-full opacity-35 blur-3xl"
+          className="pointer-events-none absolute -top-40 right-[-10%] h-[420px] w-[420px] rounded-full opacity-35 blur-3xl z-10"
           style={{ background: "radial-gradient(circle, rgba(1,140,255,0.4), transparent 70%)" }}
           aria-hidden="true"
         />
-        <div className="container-lynk relative">
+        <div className="container-lynk relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -301,6 +315,65 @@ export default function Home() {
                         <BadgeCheck size={14} className="text-white" />
                       </span>
                       <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Freelancer vs Company Section ──────────────────────── */}
+      <section className="py-24 sm:py-32">
+        <div className="container-lynk">
+          <ScrollReveal className="mx-auto mb-16 max-w-3xl text-center">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-brand-blue">A Fair Question</p>
+            <h2 className="font-display text-3xl font-bold sm:text-5xl">
+              &ldquo;Why not just hire a freelancer?&rdquo;
+            </h2>
+            <p className="text-muted mt-5 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+              Fair question. Freelancers can be great for small, one-off tasks. But if your business depends on what&apos;s being built, here&apos;s what usually happens when there&apos;s no team behind the work.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 mt-16 max-w-5xl mx-auto">
+            {/* Left Card: The Freelancer Risk */}
+            <ScrollReveal delay={0.05} className="h-full">
+              <div className="card-surface h-full rounded-2xl p-8 sm:p-10 border border-rose-500/20 dark:border-rose-500/10 hover:border-rose-500/30 transition-all duration-300">
+                <p className="text-rose-500 text-xs font-bold uppercase tracking-wider mb-6">The Freelancer Risk</p>
+                <ul className="space-y-5">
+                  {[
+                    "They go quiet mid-project — no manager to escalate to, no team to pick up the slack.",
+                    "Delays, missed deadlines, and updates that arrive whenever they get around to it.",
+                    "Inconsistent code with no documentation — expensive for anyone else to pick up later.",
+                    "No dedicated support after handoff. Once they're paid, you're on your own.",
+                    "Every new freelancer means starting over — different standards, different tools, zero continuity.",
+                  ].map((risk) => (
+                    <li key={risk} className="flex items-start gap-3.5 text-sm text-slate-700 dark:text-slate-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0 mt-2" />
+                      <span>{risk}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </ScrollReveal>
+
+            {/* Right Card: The Bravelynk Way */}
+            <ScrollReveal delay={0.1} className="h-full">
+              <div className="h-full rounded-2xl p-8 sm:p-10 bg-brand-navyDark/65 backdrop-blur-md text-white border border-brand-blue/30 hover:border-brand-blue/50 transition-all duration-300 shadow-[0_20px_40px_rgba(7,51,117,0.1)]">
+                <p className="text-brand-skyblue text-xs font-bold uppercase tracking-wider mb-6">The Bravelynk Way</p>
+                <ul className="space-y-5">
+                  {[
+                    "A registered company with a real team — if one person is unavailable, the project doesn't stop.",
+                    "Fixed timelines agreed up front, with regular check-ins so you're never left guessing.",
+                    "Clean, documented code any future developer can pick up without starting from scratch.",
+                    "A defined post-launch support window — we don't disappear the moment we're paid.",
+                    "One accountable partner for every engagement, not a new unknown each time.",
+                  ].map((way) => (
+                    <li key={way} className="flex items-start gap-3 text-sm text-slate-100">
+                      <CheckCircle2 size={16} className="text-brand-skyblue shrink-0 mt-0.5" />
+                      <span>{way}</span>
                     </li>
                   ))}
                 </ul>
@@ -483,12 +556,11 @@ export default function Home() {
                 style={{ background: "radial-gradient(circle, rgba(1,140,255,0.5), transparent 70%)" }}
                 aria-hidden="true"
               />
-              <h2 className="font-display relative mx-auto max-w-2xl text-3xl font-bold sm:text-5xl">
-                Ready to fix the technology that&apos;s slowing you down?
+              <h2 className="font-display relative mx-auto max-w-3xl text-3xl font-bold sm:text-5xl leading-tight">
+                Without a trusted tech partner, your operations are exposed.
               </h2>
-              <p className="relative mx-auto mt-5 max-w-lg text-sm text-white/75 sm:text-base">
-                Book a free consultation and walk away with a clear picture of what to fix first — no obligation,
-                no pressure.
+              <p className="relative mx-auto mt-5 max-w-xl text-sm text-white/75 sm:text-base leading-relaxed">
+                Partner with us to audit your IT facilities, build secure software, and automate up to 70% of your business operations — because that is where real, lasting ROI comes from.
               </p>
               <div className="relative mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <button

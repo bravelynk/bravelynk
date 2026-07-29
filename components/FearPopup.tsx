@@ -68,13 +68,13 @@ export default function FearPopup() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-black/5 bg-white shadow-2xl dark:border-white/10 dark:bg-ink-800"
+            className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-black/10 bg-white/40 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-[#0d1525]/45"
           >
             <button
               type="button"
               onClick={dismiss}
               aria-label="Close"
-              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/5 text-ink-900 transition-colors hover:bg-black/10 dark:bg-white/10 dark:text-white"
+              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/5 text-ink-900 transition-colors hover:bg-black/10 dark:bg-white/5 dark:text-white"
             >
               <X size={18} />
             </button>
@@ -89,17 +89,16 @@ export default function FearPopup() {
               </div>
             ) : (
               <div>
-                <div className="bg-brand-navy px-7 pb-6 pt-8 text-white sm:px-8">
-                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/10">
-                    <AlertTriangle size={22} className="text-orange-300" />
+                <div className="bg-brand-navy/10 border-b border-black/5 dark:bg-brand-navy/25 dark:border-white/5 px-7 pb-6 pt-8 text-ink-900 dark:text-white sm:px-8">
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-black/5 dark:bg-white/10">
+                    <AlertTriangle size={22} className="text-amber-600 dark:text-amber-400" />
                   </div>
                   <h2 id="popup-title" className="font-display text-2xl font-bold leading-tight sm:text-[26px]">
-                    Is a cyberattack or system failure about to cost you your business?
+                    Without a trusted tech partner, your operations are exposed.
                   </h2>
-                  <p className="mt-3 text-sm text-white/75">
-                    Every year, Nigerian SMEs lose millions of naira to outages, breaches, and outdated systems
-                    they didn&apos;t know were vulnerable. Find out where you stand — before an attacker or an
-                    outage does it for you.
+                  <p className="mt-3 text-sm text-slate-700 dark:text-slate-300">
+                    Partner with us to build custom software, install and secure your IT infrastructures, 
+                    and automate up to 70% of your business operations — because that is where real, lasting ROI comes from.
                   </p>
                 </div>
 
@@ -112,7 +111,7 @@ export default function FearPopup() {
                     className="hidden"
                     aria-hidden="true"
                   />
-                  <p className="text-sm font-semibold">Claim your free Risk &amp; Readiness Audit</p>
+                  <p className="text-sm font-semibold">Claim your free consultation</p>
 
                   <div>
                     <label htmlFor="popup-name" className="sr-only">
