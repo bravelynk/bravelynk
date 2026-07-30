@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | Bravelynk Digital Solutions",
   },
   description:
-    "Bravelynk Digital Solutions Limited (RC: 9270501) delivers software development, IT consultancy, hardware & software installation, and digital transformation for businesses in Nigeria and beyond.",
+    "Bravelynk Digital Solutions Limited (RC: 9270501) delivers software development, IT consultancy, hardware & software: sales & installation, and digital transformation for businesses in Nigeria and beyond.",
   keywords: [
     "Bravelynk",
     "software development Lagos",

@@ -23,7 +23,7 @@ export const services: Service[] = [
   },
   {
     id: "hardware-software-installation",
-    title: "Hardware & Software Installation",
+    title: "Hardware & Software: Sales & Installation",
     short: "Infrastructure, done right",
     desc: "End-to-end procurement, setup, and configuration of hardware infrastructure and software environments — installed once, working every day after.",
     points: ["Networking & servers", "Workstation setup", "OS & software deployment", "Ongoing maintenance"],
