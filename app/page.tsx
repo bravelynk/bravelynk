@@ -37,7 +37,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import ContactForm from "@/components/ContactForm";
 import { useBooking } from "@/components/BookingProvider";
 import { services, siteConfig } from "@/lib/data";
-import ComingSoon from "@/components/ComingSoon";
 
 const serviceIcons = [Code2, Lightbulb, HardDrive, Zap];
 
@@ -179,11 +178,6 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 
 export default function Home() {
   const { open } = useBooking();
-  const isComingSoon = process.env.NEXT_PUBLIC_COMING_SOON === "true";
-
-  if (isComingSoon) {
-    return <ComingSoon />;
-  }
 
 
   return (

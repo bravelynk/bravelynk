@@ -41,7 +41,7 @@ export const siteConfig = {
   name: "Bravelynk Digital Solutions Limited",
   shortName: "Bravelynk",
   rc: "RC: 9270501",
-  email: "bravelynk@gmail.com",
+  email: "info@bravelynk.com",
   phone: "07014942919",
   location: "16, Ishola Yusuf Street, Lagos, Nigeria",
 };

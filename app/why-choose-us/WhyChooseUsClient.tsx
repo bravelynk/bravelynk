@@ -29,7 +29,7 @@ const differentiators = [
 ];
 
 const stats = [
-  { value: "50+", label: "Projects Delivered" },
+  { value: "14+", label: "Projects Delivered" },
   { value: "98%", label: "Client Satisfaction" },
   { value: "5+", label: "Years of Experience" },
   { value: "24/7", label: "Support Available" },

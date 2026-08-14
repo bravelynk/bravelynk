@@ -9,6 +9,7 @@
   --fg-muted: #58657a;
   --border: #e4eaf2;
   --card: #ffffff;
+  color-scheme: light;
 }
 
 .dark {
@@ -18,6 +19,7 @@
   --fg-muted: #9ca8bc;
   --border: #1e2a3f;
   --card: #0f1829;
+  color-scheme: dark;
 }
 
 * {
@@ -131,4 +133,10 @@ body {
   color: white;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
+}
+
+/* Fallback styles for select option elements to match themes */
+select option {
+  background-color: var(--card);
+  color: var(--fg);
 }

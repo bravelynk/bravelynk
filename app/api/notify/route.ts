@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resend, MAIL_FROM } from "@/lib/resend";
+import { resend, LEAD_NOTIFICATION_TO, MAIL_FROM } from "@/lib/resend";
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,10 +14,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "A valid email is required." }, { status: 400 });
     }
 
-    // Send the notification email to bravelynk@gmail.com
+    // Send the notification email to LEAD_NOTIFICATION_TO
     await resend.emails.send({
       from: MAIL_FROM,
-      to: "bravelynk@gmail.com",
+      to: LEAD_NOTIFICATION_TO,
       reply_to: email,
       subject: "🚀 New Early Access Sign Up!",
       html: `

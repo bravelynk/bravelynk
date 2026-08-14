@@ -200,15 +200,15 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
                         defaultValue={preselected ? services.find((s) => s.id === preselected)?.title : ""}
                         className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
                       >
-                        <option value="" disabled>
+                        <option value="" disabled className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">
                           Select a service
                         </option>
                         {services.map((s) => (
-                          <option key={s.id} value={s.title}>
+                          <option key={s.id} value={s.title} className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">
                             {s.title}
                           </option>
                         ))}
-                        <option value="Not sure yet">Not sure yet — general enquiry</option>
+                        <option value="Not sure yet" className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">Not sure yet — general enquiry</option>
                       </select>
                     </div>
 
@@ -237,11 +237,11 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
                           defaultValue=""
                           className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
                         >
-                          <option value="" disabled>
+                          <option value="" disabled className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">
                             Select
                           </option>
                           {TIME_SLOTS.map((t) => (
-                            <option key={t} value={t}>
+                            <option key={t} value={t} className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">
                               {t}
                             </option>
                           ))}

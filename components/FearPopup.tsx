@@ -94,11 +94,13 @@ export default function FearPopup() {
                     <AlertTriangle size={22} className="text-amber-600 dark:text-amber-400" />
                   </div>
                   <h2 id="popup-title" className="font-display text-2xl font-bold leading-tight sm:text-[26px]">
-                    Without a trusted tech partner, your operations are exposed.
+                    Don’t Let Poor Technology Drain Your Business.
                   </h2>
                   <p className="mt-3 text-sm text-slate-700 dark:text-slate-300">
-                    Partner with us to build custom software, install and secure your IT infrastructures, 
-                    and automate up to 70% of your business operations — because that is where real, lasting ROI comes from.
+                    The wrong hardware, outdated software, and unsecured IT infrastructure can quietly cost your business thousands through downtime, lost customers, security risks, wasted staff hours, and inefficient operations.
+                  </p>
+                  <p className="mt-3 text-sm text-slate-700 dark:text-slate-300">
+                    Partner with us to build the right technology infrastructure, secure your systems, and automate up to 70% of repetitive business operations — so you stop paying for problems that could have been prevented and start investing in technology that drives real, lasting ROI.
                   </p>
                 </div>
 
