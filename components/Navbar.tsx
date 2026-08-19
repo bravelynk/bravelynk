@@ -11,9 +11,7 @@ import { useBooking } from "./BookingProvider";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/why-choose-us", label: "Why Us" },
-  { href: "/process", label: "Process" },
-  { href: "/engagement", label: "Engagement" },
+  { href: "/bravebrand", label: "Bravebrand" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];

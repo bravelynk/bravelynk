@@ -42,8 +42,7 @@ export default function Footer() {
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide">Company</h3>
           <ul className="space-y-2.5">
             {[
-              ["/why-choose-us", "Why Us"],
-              ["/process", "Our Process"],
+              ["/bravebrand", "Bravebrand"],
               ["/blog", "Blog Insights"],
               ["/#faq", "FAQ"],
               ["/contact", "Contact"],

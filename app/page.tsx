@@ -318,65 +318,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Freelancer vs Company Section ──────────────────────── */}
-      <section className="py-24 sm:py-32">
-        <div className="container-lynk">
-          <ScrollReveal className="mx-auto mb-16 max-w-3xl text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-brand-blue">A Fair Question</p>
-            <h2 className="font-display text-3xl font-bold sm:text-5xl">
-              &ldquo;Why not just hire a freelancer?&rdquo;
-            </h2>
-            <p className="text-muted mt-5 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-              Fair question. Freelancers can be great for small, one-off tasks. But if your business depends on what&apos;s being built, here&apos;s what usually happens when there&apos;s no team behind the work.
-            </p>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 mt-16 max-w-5xl mx-auto">
-            {/* Left Card: The Freelancer Risk */}
-            <ScrollReveal delay={0.05} className="h-full">
-              <div className="card-surface h-full rounded-2xl p-8 sm:p-10 border border-rose-500/20 dark:border-rose-500/10 hover:border-rose-500/30 transition-all duration-300">
-                <p className="text-rose-500 text-xs font-bold uppercase tracking-wider mb-6">The Freelancer Risk</p>
-                <ul className="space-y-5">
-                  {[
-                    "They go quiet mid-project — no manager to escalate to, no team to pick up the slack.",
-                    "Delays, missed deadlines, and updates that arrive whenever they get around to it.",
-                    "Inconsistent code with no documentation — expensive for anyone else to pick up later.",
-                    "No dedicated support after handoff. Once they're paid, you're on your own.",
-                    "Every new freelancer means starting over — different standards, different tools, zero continuity.",
-                  ].map((risk) => (
-                    <li key={risk} className="flex items-start gap-3.5 text-sm text-slate-700 dark:text-slate-300">
-                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0 mt-2" />
-                      <span>{risk}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
-
-            {/* Right Card: The Bravelynk Way */}
-            <ScrollReveal delay={0.1} className="h-full">
-              <div className="h-full rounded-2xl p-8 sm:p-10 bg-brand-navyDark/65 backdrop-blur-md text-white border border-brand-blue/30 hover:border-brand-blue/50 transition-all duration-300 shadow-[0_20px_40px_rgba(7,51,117,0.1)]">
-                <p className="text-brand-skyblue text-xs font-bold uppercase tracking-wider mb-6">The Bravelynk Way</p>
-                <ul className="space-y-5">
-                  {[
-                    "A registered company with a real team — if one person is unavailable, the project doesn't stop.",
-                    "Fixed timelines agreed up front, with regular check-ins so you're never left guessing.",
-                    "Clean, documented code any future developer can pick up without starting from scratch.",
-                    "A defined post-launch support window — we don't disappear the moment we're paid.",
-                    "One accountable partner for every engagement, not a new unknown each time.",
-                  ].map((way) => (
-                    <li key={way} className="flex items-start gap-3 text-sm text-slate-100">
-                      <CheckCircle2 size={16} className="text-brand-skyblue shrink-0 mt-0.5" />
-                      <span>{way}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
       {/* ── Services Section (Preview) ───────────────────────── */}
       <section className="py-24 sm:py-32 bg-subtle">
         <div className="container-lynk">
@@ -427,7 +368,7 @@ export default function Home() {
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-brand-blue">How It Works</p>
               <h2 className="font-display text-3xl font-bold sm:text-5xl">A clear path, from first call to launch.</h2>
             </div>
-            <Link href="/process" className="btn-outline flex gap-2 items-center text-sm py-2.5">
+            <Link href="/bravebrand" className="btn-outline flex gap-2 items-center text-sm py-2.5">
               Learn Our Workflow
               <ArrowRight size={16} />
             </Link>
@@ -468,48 +409,6 @@ export default function Home() {
                 <div className="card-surface flex h-full flex-col items-center gap-3 rounded-xl px-4 py-6 text-center">
                   <ind.icon size={22} className="text-brand-blue" />
                   <span className="text-xs font-medium leading-tight">{ind.label}</span>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Engagement (Preview) ─────────────────────────────── */}
-      <section className="py-24 sm:py-32">
-        <div className="container-lynk">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
-            <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-brand-blue">How To Partner</p>
-              <h2 className="font-display text-3xl font-bold sm:text-5xl">Engagement models built for flexibility</h2>
-            </div>
-            <Link href="/engagement" className="btn-outline flex gap-2 items-center text-sm py-2.5">
-              Compare Models
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "Project-Based", desc: "Fixed-scope builds — a website, an app, an installation — quoted upfront with a fixed price and timeline." },
-              { title: "Retainer", desc: "Ongoing consultancy, maintenance, and support on a predictable monthly plan." },
-              { title: "Free Risk & Readiness Audit", desc: "Start with a no-obligation review of your current systems, highlighting immediate issues.", highlight: true },
-            ].map((m, i) => (
-              <ScrollReveal key={m.title} delay={i * 0.08} className="h-full">
-                <div className={`card-surface rounded-2xl p-7 flex flex-col justify-between h-full relative ${m.highlight ? "border-brand-blue ring-2 ring-brand-blue/10" : ""}`}>
-                  {m.highlight && (
-                    <span className="absolute -top-3 left-6 bg-brand-blue text-white text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full">
-                      Free Offer
-                    </span>
-                  )}
-                  <div>
-                    <h3 className="font-display text-lg font-bold mb-3">{m.title}</h3>
-                    <p className="text-muted text-xs leading-relaxed mb-6">{m.desc}</p>
-                  </div>
-                  <Link href="/engagement" className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:underline">
-                    Find out more
-                    <ArrowRight size={12} />
-                  </Link>
                 </div>
               </ScrollReveal>
             ))}
