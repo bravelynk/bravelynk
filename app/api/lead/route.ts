@@ -4,7 +4,7 @@ import { resend, LEAD_NOTIFICATION_TO, MAIL_FROM } from "@/lib/resend";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, phone, company, honeypot } = body ?? {};
+    const { name, email, phone, company, service, honeypot } = body ?? {};
 
     // Basic spam trap — honeypot field should always be empty for real users.
     if (honeypot) {
@@ -19,13 +19,14 @@ export async function POST(req: NextRequest) {
       from: MAIL_FROM,
       to: LEAD_NOTIFICATION_TO,
       reply_to: email,
-      subject: `New free audit request — ${name || "Website visitor"}`,
+      subject: `New Architecture & Scoping Session Request — ${name || "Website visitor"}${service ? ` [${service}]` : ""}`,
       html: `
-        <h2>New lead from the "Free Risk Audit" pop-up</h2>
+        <h2>New lead: Architecture & Scoping Session Request</h2>
         <p><strong>Name:</strong> ${escapeHtml(name || "N/A")}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Phone:</strong> ${escapeHtml(phone || "N/A")}</p>
         <p><strong>Company:</strong> ${escapeHtml(company || "N/A")}</p>
+        <p><strong>Service Interest:</strong> ${escapeHtml(service || "General Scoping")}</p>
       `,
     });
 
@@ -33,12 +34,12 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: MAIL_FROM,
       to: email,
-      subject: "We received your request — Bravelynk Digital Solutions",
+      subject: "Your Free Architecture & Scoping Session — Bravelynk",
       html: `
         <p>Hi ${escapeHtml(name || "there")},</p>
-        <p>Thanks for requesting your free Risk & Readiness Audit from Bravelynk Digital Solutions Limited. A member of our team will reach out within one business day.</p>
-        <p>In the meantime, feel free to reply to this email with any details about your systems or concerns.</p>
-        <p>— The Bravelynk Team</p>
+        <p>Thanks for requesting a complimentary Architecture &amp; Scoping Session with Bravelynk Digital Solutions Limited. A member of our technical architecture team will review your details and reach out within one business day with initial insights and scheduling options.</p>
+        <p>In the meantime, feel free to reply directly to this email with any product briefs, specs, or questions.</p>
+        <p>— The Bravelynk Engineering Team</p>
       `,
     });
 

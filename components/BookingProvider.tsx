@@ -127,7 +127,7 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="absolute inset-0 bg-ink-900/60 backdrop-blur-sm dark:bg-black/70"
+              className="absolute inset-0 bg-ink-900/60 backdrop-blur-sm"
               onClick={close}
               aria-hidden="true"
             />
@@ -140,14 +140,14 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 12, scale: 0.98 }}
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-black/5 bg-white p-6 shadow-2xl dark:border-white/10 dark:bg-ink-800 sm:p-8"
+              className="relative z-10 max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-black/5 bg-white p-6 shadow-2xl sm:p-8"
             >
               <button
                 ref={closeBtnRef}
                 type="button"
                 onClick={close}
                 aria-label="Close booking dialog"
-                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-black/5"
               >
                 <X size={18} />
               </button>
@@ -167,7 +167,7 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
               ) : (
                 <>
                   <div className="mb-6 flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-light text-brand-blue dark:bg-white/10">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-light text-brand-blue">
                       <CalendarCheck size={20} />
                     </div>
                     <div>
@@ -198,17 +198,17 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
                         name="service"
                         required
                         defaultValue={preselected ? services.find((s) => s.id === preselected)?.title : ""}
-                        className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                        className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue"
                       >
-                        <option value="" disabled className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">
+                        <option value="" disabled className="bg-white text-ink-900">
                           Select a service
                         </option>
                         {services.map((s) => (
-                          <option key={s.id} value={s.title} className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">
+                          <option key={s.id} value={s.title} className="bg-white text-ink-900">
                             {s.title}
                           </option>
                         ))}
-                        <option value="Not sure yet" className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">Not sure yet — general enquiry</option>
+                        <option value="Not sure yet" className="bg-white text-ink-900">Not sure yet — general enquiry</option>
                       </select>
                     </div>
 
@@ -223,7 +223,7 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
                           name="date"
                           required
                           min={todayIso()}
-                          className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                          className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue"
                         />
                       </div>
                       <div>
@@ -235,13 +235,13 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
                           name="time"
                           required
                           defaultValue=""
-                          className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                          className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue"
                         >
-                          <option value="" disabled className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">
+                          <option value="" disabled className="bg-white text-ink-900">
                             Select
                           </option>
                           {TIME_SLOTS.map((t) => (
-                            <option key={t} value={t} className="bg-white text-ink-900 dark:bg-ink-800 dark:text-white">
+                            <option key={t} value={t} className="bg-white text-ink-900">
                               {t}
                             </option>
                           ))}
@@ -259,7 +259,7 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
                           type="text"
                           name="name"
                           required
-                          className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                          className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue"
                         />
                       </div>
                       <div>
@@ -270,7 +270,7 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
                           id="booking-phone"
                           type="tel"
                           name="phone"
-                          className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                          className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue"
                         />
                       </div>
                     </div>
@@ -284,7 +284,7 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
                         type="email"
                         name="email"
                         required
-                        className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                        className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue"
                       />
                     </div>
 
@@ -297,7 +297,7 @@ export default function BookingProvider({ children }: { children: ReactNode }) {
                         name="notes"
                         rows={3}
                         placeholder="Tell us briefly what you need..."
-                        className="w-full resize-none rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                        className="w-full resize-none rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue"
                       />
                     </div>
 

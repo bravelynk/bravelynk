@@ -38,8 +38,8 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* Header section */}
-        <header className="mb-12 border-b border-black/5 pb-8 dark:border-white/10">
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-light text-brand-blue dark:bg-white/10">
+        <header className="mb-12 border-b border-black/5 pb-8">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-light text-brand-blue">
             <Shield size={24} />
           </div>
           <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl mb-3">
@@ -51,9 +51,9 @@ export default function PrivacyPolicy() {
         </header>
 
         {/* Content body */}
-        <div className="prose prose-slate dark:prose-invert max-w-none space-y-8 text-sm leading-relaxed text-muted">
+        <div className="prose prose-slate max-w-none space-y-8 text-sm leading-relaxed text-muted">
           <section className="space-y-3">
-            <h2 className="font-display text-xl font-bold text-ink-900 dark:text-white">1. Introduction</h2>
+            <h2 className="font-display text-xl font-bold text-ink-900">1. Introduction</h2>
             <p>
               Bravelynk Digital Solutions Limited (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) respects your privacy and is committed to protecting your personal data. This Privacy Policy describes how we collect, use, store, and share your personal information when you visit our website, use our services, or interact with us.
             </p>
@@ -63,7 +63,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display text-xl font-bold text-ink-900 dark:text-white">2. Information We Collect</h2>
+            <h2 className="font-display text-xl font-bold text-ink-900">2. Information We Collect</h2>
             <p>We may collect several types of information for various purposes, including:</p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display text-xl font-bold text-ink-900 dark:text-white">3. How We Use Your Information</h2>
+            <h2 className="font-display text-xl font-bold text-ink-900">3. How We Use Your Information</h2>
             <p>We use the collected data for various purposes, including to:</p>
             <ul className="list-disc pl-5 space-y-2">
               <li>Provide, maintain, and monitor our website and services.</li>
@@ -92,7 +92,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display text-xl font-bold text-ink-900 dark:text-white">4. Data Storage and Protection</h2>
+            <h2 className="font-display text-xl font-bold text-ink-900">4. Data Storage and Protection</h2>
             <p>
               We implement industry-standard administrative, technical, and physical security measures to safeguard your personal information against unauthorized access, loss, alteration, or disclosure.
             </p>
@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display text-xl font-bold text-ink-900 dark:text-white">5. Your Data Rights</h2>
+            <h2 className="font-display text-xl font-bold text-ink-900">5. Your Data Rights</h2>
             <p>
               Under the Nigeria Data Protection Regulation (NDPR) and other applicable laws, you have specific rights regarding your personal data, including:
             </p>
@@ -118,7 +118,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display text-xl font-bold text-ink-900 dark:text-white">6. Sharing of Data</h2>
+            <h2 className="font-display text-xl font-bold text-ink-900">6. Sharing of Data</h2>
             <p>
               We do not sell, trade, or rent your personal identification information to third parties. We may share generic aggregated demographic information not linked to any personal identification information with our business partners and trusted affiliates for the purposes outlined above.
             </p>
@@ -128,14 +128,14 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display text-xl font-bold text-ink-900 dark:text-white">7. Changes to This Privacy Policy</h2>
+            <h2 className="font-display text-xl font-bold text-ink-900">7. Changes to This Privacy Policy</h2>
             <p>
               We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &ldquo;Last updated&rdquo; date at the top of this Privacy Policy.
             </p>
           </section>
 
-          <section className="space-y-3 pt-4 border-t border-black/5 dark:border-white/10">
-            <h2 className="font-display text-xl font-bold text-ink-900 dark:text-white">8. Contact Us</h2>
+          <section className="space-y-3 pt-4 border-t border-black/5">
+            <h2 className="font-display text-xl font-bold text-ink-900">8. Contact Us</h2>
             <p>
               If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:
             </p>

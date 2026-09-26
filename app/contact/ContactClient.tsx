@@ -36,8 +36,8 @@ export default function ContactClient() {
         </div>
 
         {/* Header section */}
-        <header className="mb-16 border-b border-black/5 pb-8 dark:border-white/10 max-w-3xl">
-          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue dark:bg-white/10">
+        <header className="mb-16 border-b border-black/5 pb-8 max-w-3xl">
+          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue">
             Get In Touch
           </span>
           <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-4">
@@ -56,7 +56,7 @@ export default function ContactClient() {
               <h2 className="font-display text-xl font-bold mb-4">Our Office</h2>
               <div className="space-y-5">
                 <div className="flex items-start gap-3.5 text-sm">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand-blue dark:bg-white/10">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand-blue">
                     <MapPin size={18} />
                   </span>
                   <div className="leading-relaxed">
@@ -66,7 +66,7 @@ export default function ContactClient() {
                 </div>
 
                 <div className="flex items-start gap-3.5 text-sm">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand-blue dark:bg-white/10">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand-blue">
                     <Mail size={18} />
                   </span>
                   <div className="leading-relaxed">
@@ -78,7 +78,7 @@ export default function ContactClient() {
                 </div>
 
                 <div className="flex items-start gap-3.5 text-sm">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand-blue dark:bg-white/10">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand-blue">
                     <Phone size={18} />
                   </span>
                   <div className="leading-relaxed">
@@ -92,8 +92,8 @@ export default function ContactClient() {
             </div>
 
             {/* Direct Booking Block */}
-            <div className="rounded-2xl border border-black/5 bg-subtle p-6 dark:border-white/10">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-brand-light text-brand-blue dark:bg-white/10">
+            <div className="rounded-2xl border border-black/5 bg-subtle p-6">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-brand-light text-brand-blue">
                 <Calendar size={18} />
               </div>
               <h3 className="font-display font-bold text-base mb-2">Book a direct consultation</h3>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getPostData, getSortedPostsData } from "@/lib/markdown";
-import { ArrowLeft, Calendar, Clock, ChevronRight, MessageSquare } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, ChevronRight, Sparkles } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export async function generateStaticParams() {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     };
   } catch (e) {
     return {
-      title: "Blog Post | Bravelynk",
+      title: "Blog Post | Bravelynk Digital Solutions",
     };
   }
 }
@@ -34,75 +34,126 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getPostData(params.slug);
 
   return (
-    <div className="min-h-screen bg-[#080e1a] text-white pt-36 pb-24 relative overflow-hidden">
-      {/* Glow effects */}
+    <article className="relative overflow-hidden pt-36 pb-24">
+      {/* Background decorations matching other pages */}
       <div
-        className="pointer-events-none absolute top-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full opacity-15 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(1,140,255,0.4), transparent 70%)" }}
+        className="pointer-events-none absolute -top-40 right-[-10%] h-[400px] w-[400px] rounded-full opacity-35 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(1,140,255,0.15), transparent 70%)" }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute bottom-10 left-[-10%] h-[350px] w-[350px] rounded-full opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(1,101,255,0.1), transparent 70%)" }}
+        aria-hidden="true"
       />
 
-      <div className="container-lynk relative z-10">
-        {/* Breadcrumb / Back button */}
-        <div className="mb-10 flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <Link href="/blog" className="hover:text-brand-skyblue transition-colors flex items-center gap-1">
-            <ArrowLeft size={14} /> Back to Blog
+      <div className="container-lynk relative">
+        {/* ── Breadcrumb ── */}
+        <div className="mb-8 flex items-center gap-2 text-xs sm:text-sm text-muted">
+          <Link href="/" className="hover:text-brand-blue transition-colors font-medium">
+            Home
           </Link>
-          <ChevronRight size={12} className="text-slate-600" />
-          <span className="text-slate-500 truncate max-w-[200px] sm:max-w-sm">{post.title}</span>
+          <ChevronRight size={13} className="text-black/30" />
+          <Link href="/blog" className="hover:text-brand-blue transition-colors font-medium">
+            Blog
+          </Link>
+          <ChevronRight size={13} className="text-black/30" />
+          <span className="text-ink-900/60 truncate max-w-[180px] sm:max-w-md font-medium">
+            {post.title}
+          </span>
         </div>
 
-        {/* Main Article Section */}
-        <article className="max-w-3xl mx-auto">
+        {/* ── Back to Blog button ── */}
+        <div className="mb-8">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-brand-blue transition-colors"
+          >
+            <ArrowLeft size={16} />
+            Back to all articles
+          </Link>
+        </div>
+
+        {/* ── Main Article Container ── */}
+        <div className="max-w-3xl mx-auto">
           {/* Header */}
-          <ScrollReveal className="space-y-6 mb-12 pb-8 border-b border-black/5 dark:border-white/5">
-            <h1 className="font-display text-3xl sm:text-5xl font-bold tracking-tight leading-[1.2] text-slate-100">
+          <ScrollReveal className="space-y-4 mb-8">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3.5 py-1.5 text-xs font-semibold text-brand-blue">
+              <Sparkles size={13} />
+              Bravelynk Insights
+            </span>
+
+            <h1 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 leading-[1.18]">
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-5 text-xs sm:text-sm text-slate-400">
-              <span className="flex items-center gap-1.5">
-                <Calendar size={14} />
+            <div className="flex items-center gap-5 text-xs sm:text-sm text-muted pt-2 pb-6 border-b border-black/5">
+              <span className="flex items-center gap-1.5 font-medium">
+                <Calendar size={14} className="text-brand-blue" />
                 {new Date(post.date).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}
               </span>
-              <span className="flex items-center gap-1.5">
-                <Clock size={14} />
+              <span className="flex items-center gap-1.5 font-medium">
+                <Clock size={14} className="text-brand-blue" />
                 {post.readTime}
               </span>
             </div>
           </ScrollReveal>
 
-          {/* Render markdown content html */}
-          <ScrollReveal delay={0.08} className="space-y-4 font-sans text-slate-300">
-            <div 
-              className="blog-content leading-relaxed" 
-              dangerouslySetInnerHTML={{ __html: post.content }} 
+          {/* Excerpt callout */}
+          {post.excerpt && (
+            <ScrollReveal delay={0.04}>
+              <div className="mb-10 rounded-2xl border border-brand-blue/15 bg-brand-light/50 p-6 sm:p-7 text-sm sm:text-base text-ink-900/85 leading-relaxed font-medium">
+                {post.excerpt}
+              </div>
+            </ScrollReveal>
+          )}
+
+          {/* Markdown Content */}
+          <ScrollReveal delay={0.08} className="space-y-4">
+            <div
+              className="blog-content leading-relaxed text-slate-700"
+              dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </ScrollReveal>
 
-          {/* Share/Action CTA Card at the bottom of the article */}
+          {/* Share/Action CTA Card at the bottom */}
           <ScrollReveal delay={0.12} className="mt-16">
-            <div className="card-surface p-8 rounded-2xl bg-gradient-to-br from-brand-navyDark/30 to-[#080e1a] border border-brand-blue/20 hover:border-brand-blue/30 transition-all text-center max-w-2xl mx-auto backdrop-blur-md">
-              <MessageSquare size={36} className="text-brand-skyblue mx-auto mb-4" />
-              <h3 className="font-display text-lg sm:text-xl font-bold text-slate-100 mb-2">
+            <div className="relative overflow-hidden rounded-3xl bg-brand-navy px-8 py-12 sm:px-12 sm:py-16 text-center text-white shadow-xl">
+              <div
+                className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full opacity-30 blur-3xl"
+                style={{ background: "radial-gradient(circle, rgba(1,140,255,0.5), transparent 70%)" }}
+                aria-hidden="true"
+              />
+              <h3 className="font-display relative mx-auto max-w-xl text-2xl sm:text-3xl font-bold text-white mb-3">
                 Need advice on your technology setups?
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-md mx-auto">
-                We can audit your IT facilities, secure your local workflows, and implement the custom software automation your business needs to grow.
+              <p className="relative mx-auto text-sm sm:text-base text-white/75 leading-relaxed mb-6 max-w-lg">
+                We audit IT workflows, secure infrastructure, and engineer custom digital solutions that help your business scale efficiently.
               </p>
-              <Link
-                href="/contact"
-                className="btn-brand inline-flex items-center gap-2 py-3 px-6 text-xs sm:text-sm"
-              >
-                Book a Free Consultation
-              </Link>
+              <div className="relative flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Link
+                  href="/contact-us"
+                  className="btn-brand bg-white text-brand-navy hover:bg-brand-light py-3.5 px-7 text-xs sm:text-sm font-bold inline-flex items-center gap-2"
+                >
+                  Book a Consultation
+                  <ArrowRight size={15} />
+                </Link>
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-xs sm:text-sm font-semibold text-white transition-colors hover:border-white/50"
+                >
+                  More Articles
+                </Link>
+              </div>
             </div>
           </ScrollReveal>
-        </article>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }
+

@@ -66,8 +66,8 @@ export default function ProcessClient() {
         </div>
 
         {/* Header section */}
-        <header className="mb-16 border-b border-black/5 pb-8 dark:border-white/10 max-w-3xl">
-          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue dark:bg-white/10">
+        <header className="mb-16 border-b border-black/5 pb-8 max-w-3xl">
+          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue">
             Our Process
           </span>
           <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-4">
@@ -79,7 +79,7 @@ export default function ProcessClient() {
         </header>
 
         {/* Process Timeline Section */}
-        <div className="relative space-y-12 before:absolute before:inset-y-4 before:left-8 before:w-0.5 before:bg-black/5 dark:before:bg-white/10 sm:before:left-1/2">
+        <div className="relative space-y-12 before:absolute before:inset-y-4 before:left-8 before:w-0.5 before:bg-black/5 sm:before:left-1/2">
           {processSteps.map((p, i) => {
             const Icon = p.icon;
             const isEven = i % 2 === 0;
@@ -87,14 +87,14 @@ export default function ProcessClient() {
               <ScrollReveal key={p.step} delay={i * 0.08}>
                 <div className={`relative flex flex-col sm:flex-row items-stretch sm:justify-between gap-8 ${isEven ? "sm:flex-row-reverse" : ""}`}>
                   {/* Timeline Badge center */}
-                  <div className="absolute left-8 top-1.5 -ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue text-white shadow-soft border-4 border-white dark:border-ink-900 sm:left-1/2 sm:-ml-4 z-10">
+                  <div className="absolute left-8 top-1.5 -ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue text-white shadow-soft border-4 border-white sm:left-1/2 sm:-ml-4 z-10">
                     <span className="text-[10px] font-bold">{p.step}</span>
                   </div>
 
                   {/* Content block */}
                   <div className="w-full sm:w-[46%] pl-16 sm:pl-0">
                     <div className="card-surface rounded-2xl p-7 sm:p-8 hover:shadow-card transition-shadow duration-300">
-                      <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-light text-brand-blue dark:bg-white/10">
+                      <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-light text-brand-blue">
                         <Icon size={20} />
                       </div>
                       <h3 className="font-display text-xl font-bold mb-2">{p.title}</h3>
@@ -103,7 +103,7 @@ export default function ProcessClient() {
                       <div className="space-y-2.5">
                         {p.highlights.map((h) => (
                           <div key={h} className="flex items-center gap-2 text-xs">
-                            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand-blue dark:bg-white/10">
+                            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand-blue">
                               <Check size={11} />
                             </span>
                             <span className="font-medium">{h}</span>
@@ -122,7 +122,7 @@ export default function ProcessClient() {
         </div>
 
         {/* CTA section */}
-        <section className="mt-24 border-t border-black/5 pt-16 text-center dark:border-white/10">
+        <section className="mt-24 border-t border-black/5 pt-16 text-center">
           <h3 className="font-display text-2xl font-bold mb-4">Want to map out your digital roadmap?</h3>
           <p className="text-muted max-w-md mx-auto mb-8 text-sm">
             Let&apos;s start with step 01. We&apos;ll schedule a short audit call to look at where your business technology is lagging behind.

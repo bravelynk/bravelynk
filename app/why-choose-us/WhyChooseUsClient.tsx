@@ -72,8 +72,8 @@ export default function WhyChooseUsClient() {
         </div>
 
         {/* Header section */}
-        <header className="mb-16 border-b border-black/5 pb-8 dark:border-white/10 max-w-3xl">
-          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue dark:bg-white/10">
+        <header className="mb-16 border-b border-black/5 pb-8 max-w-3xl">
+          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue">
             Why Choose Us
           </span>
           <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-4">
@@ -96,7 +96,7 @@ export default function WhyChooseUsClient() {
             </p>
 
             {/* Stats list */}
-            <div className="grid grid-cols-2 gap-6 pt-6 border-t border-black/5 dark:border-white/10">
+            <div className="grid grid-cols-2 gap-6 pt-6 border-t border-black/5">
               {stats.map((s) => (
                 <div key={s.label}>
                   <p className="font-display text-3xl font-bold text-brand-blue sm:text-4xl">{s.value}</p>
@@ -140,7 +140,7 @@ export default function WhyChooseUsClient() {
               <ScrollReveal key={d.title} delay={i * 0.08}>
                 <div className="card-surface h-full rounded-2xl p-7 flex flex-col justify-between transition-shadow duration-300 hover:shadow-card">
                   <div>
-                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-light text-brand-blue dark:bg-white/10">
+                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-light text-brand-blue">
                       <d.icon size={20} />
                     </div>
                     <h3 className="font-display text-base font-bold mb-2">{d.title}</h3>
@@ -153,7 +153,7 @@ export default function WhyChooseUsClient() {
         </section>
 
         {/* CTA */}
-        <section className="border-t border-black/5 pt-16 text-center dark:border-white/10">
+        <section className="border-t border-black/5 pt-16 text-center">
           <h3 className="font-display text-2xl font-bold mb-4">Ready to experience technology done right?</h3>
           <p className="text-muted max-w-md mx-auto mb-8 text-sm">
             Book a consultation session with our engineers. We offer a direct, jargon-free conversation about your business needs.

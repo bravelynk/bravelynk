@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "software company pricing Nigeria",
     "Bravelynk retainer plan",
     "free business technology audit Nigeria",
-    "IT retainer Lagos",
+    "IT business solutions Lagos",
   ],
 };
 

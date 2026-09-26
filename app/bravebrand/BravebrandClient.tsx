@@ -116,8 +116,8 @@ export default function BravebrandClient() {
         </div>
 
         {/* ── Header ──────────────────────────────────────────── */}
-        <header className="mb-16 border-b border-black/5 pb-8 dark:border-white/10 max-w-3xl">
-          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue dark:bg-white/10">
+        <header className="mb-16 border-b border-black/5 pb-8 max-w-3xl">
+          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue">
             Bravebrand
           </span>
           <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-4">
@@ -140,7 +140,7 @@ export default function BravebrandClient() {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-6 pt-6 border-t border-black/5 dark:border-white/10">
+            <div className="grid grid-cols-2 gap-6 pt-6 border-t border-black/5">
               {stats.map((s) => (
                 <div key={s.label}>
                   <p className="font-display text-3xl font-bold text-brand-blue sm:text-4xl">{s.value}</p>
@@ -184,7 +184,7 @@ export default function BravebrandClient() {
               <ScrollReveal key={d.title} delay={i * 0.08}>
                 <div className="card-surface h-full rounded-2xl p-7 flex flex-col justify-between transition-shadow duration-300 hover:shadow-card">
                   <div>
-                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-light text-brand-blue dark:bg-white/10">
+                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-light text-brand-blue">
                       <d.icon size={20} />
                     </div>
                     <h3 className="font-display text-base font-bold mb-2">{d.title}</h3>
@@ -206,7 +206,7 @@ export default function BravebrandClient() {
             </p>
           </div>
 
-          <div className="relative space-y-12 before:absolute before:inset-y-4 before:left-8 before:w-0.5 before:bg-black/5 dark:before:bg-white/10 sm:before:left-1/2">
+          <div className="relative space-y-12 before:absolute before:inset-y-4 before:left-8 before:w-0.5 before:bg-black/5 sm:before:left-1/2">
             {processSteps.map((p, i) => {
               const Icon = p.icon;
               const isEven = i % 2 === 0;
@@ -214,14 +214,14 @@ export default function BravebrandClient() {
                 <ScrollReveal key={p.step} delay={i * 0.08}>
                   <div className={`relative flex flex-col sm:flex-row items-stretch sm:justify-between gap-8 ${isEven ? "sm:flex-row-reverse" : ""}`}>
                     {/* Timeline badge */}
-                    <div className="absolute left-8 top-1.5 -ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue text-white shadow-soft border-4 border-white dark:border-ink-900 sm:left-1/2 sm:-ml-4 z-10">
+                    <div className="absolute left-8 top-1.5 -ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue text-white shadow-soft border-4 border-white sm:left-1/2 sm:-ml-4 z-10">
                       <span className="text-[10px] font-bold">{p.step}</span>
                     </div>
 
                     {/* Content block */}
                     <div className="w-full sm:w-[46%] pl-16 sm:pl-0">
                       <div className="card-surface rounded-2xl p-7 sm:p-8 hover:shadow-card transition-shadow duration-300">
-                        <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-light text-brand-blue dark:bg-white/10">
+                        <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-light text-brand-blue">
                           <Icon size={20} />
                         </div>
                         <h3 className="font-display text-xl font-bold mb-2">{p.title}</h3>
@@ -230,7 +230,7 @@ export default function BravebrandClient() {
                         <div className="space-y-2.5">
                           {p.highlights.map((h) => (
                             <div key={h} className="flex items-center gap-2 text-xs">
-                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand-blue dark:bg-white/10">
+                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand-blue">
                                 <Check size={11} />
                               </span>
                               <span className="font-medium">{h}</span>
@@ -250,7 +250,7 @@ export default function BravebrandClient() {
         </section>
 
         {/* ── CTA ──────────────────────────────────────────── */}
-        <section className="border-t border-black/5 pt-16 text-center dark:border-white/10">
+        <section className="border-t border-black/5 pt-16 text-center">
           <h3 className="font-display text-2xl font-bold mb-4">Ready to experience technology done right?</h3>
           <p className="text-muted max-w-md mx-auto mb-8 text-sm">
             Book a consultation session with our engineers. We offer a direct, jargon-free conversation about your business needs — starting with step 01.

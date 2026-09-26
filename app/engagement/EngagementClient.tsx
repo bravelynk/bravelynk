@@ -77,8 +77,8 @@ export default function EngagementClient() {
         </div>
 
         {/* Header section */}
-        <header className="mb-16 border-b border-black/5 pb-8 dark:border-white/10 max-w-3xl">
-          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue dark:bg-white/10">
+        <header className="mb-16 border-b border-black/5 pb-8 max-w-3xl">
+          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue">
             Engagement Model
           </span>
           <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-4">
@@ -96,7 +96,7 @@ export default function EngagementClient() {
               <div
                 className={`card-surface flex h-full flex-col justify-between rounded-2xl p-8 transition-all duration-300 relative ${
                   m.highlight
-                    ? "border-brand-blue shadow-soft ring-2 ring-brand-blue/10 dark:bg-ink-800"
+                    ? "border-brand-blue shadow-soft ring-2 ring-brand-blue/10"
                     : "hover:shadow-card"
                 }`}
               >
@@ -114,7 +114,7 @@ export default function EngagementClient() {
                       className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
                         m.highlight
                           ? "bg-brand-blue text-white"
-                          : "bg-brand-light text-brand-blue dark:bg-white/10"
+                          : "bg-brand-light text-brand-blue"
                       }`}
                     >
                       {m.type}
@@ -123,7 +123,7 @@ export default function EngagementClient() {
 
                   <p className="text-muted text-sm leading-relaxed mb-6 h-20 overflow-hidden">{m.desc}</p>
 
-                  <div className="border-t border-black/5 pt-6 dark:border-white/10 mb-8">
+                  <div className="border-t border-black/5 pt-6 mb-8">
                     <ul className="space-y-4">
                       {m.points.map((p) => (
                         <li key={p} className="flex items-start gap-2.5 text-sm">
@@ -131,7 +131,7 @@ export default function EngagementClient() {
                             className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
                               m.highlight
                                 ? "bg-brand-blue text-white"
-                                : "bg-brand-light text-brand-blue dark:bg-white/10"
+                                : "bg-brand-light text-brand-blue"
                             }`}
                           >
                             <Check size={12} />

@@ -4,7 +4,7 @@ import { resend, LEAD_NOTIFICATION_TO, MAIL_FROM } from "@/lib/resend";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, company, message, honeypot } = body ?? {};
+    const { name, email, company, projectType, budget, message, honeypot } = body ?? {};
 
     if (honeypot) {
       return NextResponse.json({ ok: true });
@@ -22,14 +22,16 @@ export async function POST(req: NextRequest) {
       from: MAIL_FROM,
       to: LEAD_NOTIFICATION_TO,
       reply_to: email,
-      subject: `New contact form message from ${name}`,
+      subject: `[Bravelynk Project Inquiry] New message from ${name}`,
       html: `
-        <h2>New message from the website contact form</h2>
+        <h2>New Project Inquiry - Bravelynk Digital Solutions</h2>
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Company:</strong> ${escapeHtml(company || "N/A")}</p>
-        <p><strong>Message:</strong></p>
-        <p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
+        <p><strong>Project Type:</strong> ${escapeHtml(projectType || "General Inquiry")}</p>
+        <p><strong>Budget Range:</strong> ${escapeHtml(budget || "Not Specified")}</p>
+        <p><strong>Project Description:</strong></p>
+        <p style="background: #f4f6f8; padding: 12px; border-radius: 6px;">${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
       `,
     });
 

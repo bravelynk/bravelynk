@@ -2,20 +2,35 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { AlertTriangle, X, Loader2, ShieldCheck } from "lucide-react";
+import { Sparkles, X, Loader2, ShieldCheck, CheckCircle2, ArrowRight } from "lucide-react";
+
+const SERVICE_OPTIONS = [
+  "Mobile & Web App Development",
+  "AI Solutions",
+  "Backend Solutions",
+  "Website Development",
+];
 
 export default function FearPopup() {
   const [visible, setVisible] = useState(false);
+  const [selectedService, setSelectedService] = useState<string>("Mobile & Web App Development");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 10000);
+    // Check if dismissed in current session
+    if (typeof window !== "undefined" && sessionStorage.getItem("bravelynk_scope_popup_dismissed")) {
+      return;
+    }
+    const timer = setTimeout(() => setVisible(true), 7000);
     return () => clearTimeout(timer);
   }, []);
 
   function dismiss() {
     setVisible(false);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("bravelynk_scope_popup_dismissed", "true");
+    }
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -28,6 +43,7 @@ export default function FearPopup() {
       email: form.get("email"),
       phone: form.get("phone"),
       company: form.get("company"),
+      service: selectedService,
       honeypot: form.get("website"),
     };
 
@@ -40,6 +56,9 @@ export default function FearPopup() {
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || "Something went wrong.");
       setStatus("success");
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("bravelynk_scope_popup_dismissed", "true");
+      }
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
@@ -56,7 +75,7 @@ export default function FearPopup() {
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="absolute inset-0 bg-ink-900/70 backdrop-blur-sm dark:bg-black/80"
+            className="absolute inset-0 bg-ink-900/60 backdrop-blur-sm"
             onClick={dismiss}
             aria-hidden="true"
           />
@@ -68,43 +87,85 @@ export default function FearPopup() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-black/10 bg-white/40 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-[#0d1525]/45"
+            className="relative z-10 w-full max-w-lg overflow-hidden rounded-3xl border border-black/10 bg-white shadow-2xl"
           >
             <button
               type="button"
               onClick={dismiss}
               aria-label="Close"
-              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/5 text-ink-900 transition-colors hover:bg-black/10 dark:bg-white/5 dark:text-white"
+              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/5 text-ink-900 transition-colors hover:bg-black/10"
             >
               <X size={18} />
             </button>
 
             {status === "success" ? (
-              <div className="flex flex-col items-center px-8 py-12 text-center">
-                <ShieldCheck className="mb-4 text-brand-blue" size={44} />
-                <h2 className="mb-2 font-display text-xl font-bold">You&apos;re on the list</h2>
-                <p className="text-muted text-sm">
-                  Check your inbox — we&apos;re preparing your free Risk &amp; Readiness Audit now.
+              <div className="flex flex-col items-center px-8 py-14 text-center">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-light text-brand-blue">
+                  <ShieldCheck size={36} />
+                </div>
+                <h2 className="mb-2 font-display text-2xl font-bold text-ink-900">
+                  You&apos;re on the build list
+                </h2>
+                <p className="text-muted text-sm max-w-sm">
+                  Thank you! An engineering lead will review your details and send over your free Architecture &amp; Scoping Roadmap within 24 hours.
                 </p>
+                <button
+                  type="button"
+                  onClick={dismiss}
+                  className="btn-brand mt-6 text-xs py-2.5 px-6"
+                >
+                  Continue Browsing
+                </button>
               </div>
             ) : (
               <div>
-                <div className="bg-brand-navy/10 border-b border-black/5 dark:bg-brand-navy/25 dark:border-white/5 px-7 pb-6 pt-8 text-ink-900 dark:text-white sm:px-8">
-                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-black/5 dark:bg-white/10">
-                    <AlertTriangle size={22} className="text-amber-600 dark:text-amber-400" />
+                <div className="bg-gradient-to-br from-brand-light/70 via-white to-white border-b border-black/5 px-7 pb-5 pt-8 text-ink-900 sm:px-8">
+                  <div className="mb-3 flex items-center gap-2">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-blue text-white shadow-xs">
+                      <Sparkles size={16} />
+                    </span>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-brand-blue">
+                      Complimentary Architecture Session
+                    </span>
                   </div>
-                  <h2 id="popup-title" className="font-display text-2xl font-bold leading-tight sm:text-[26px]">
-                    Don’t Let Poor Technology Drain Your Business.
+                  <h2 id="popup-title" className="font-display text-2xl font-bold leading-tight sm:text-[25px] text-ink-900">
+                    Ready to Build &amp; Scale Your Next Digital Product?
                   </h2>
-                  <p className="mt-3 text-sm text-slate-700 dark:text-slate-300">
-                    The wrong hardware, outdated software, and unsecured IT infrastructure can quietly cost your business thousands through downtime, lost customers, security risks, wasted staff hours, and inefficient operations.
+                  <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Turn your vision into scalable technology. From custom web &amp; mobile apps to AI workflow automation and cloud infrastructure, our senior engineers help you plan before building.
                   </p>
-                  <p className="mt-3 text-sm text-slate-700 dark:text-slate-300">
-                    Partner with us to build the right technology infrastructure, secure your systems, and automate up to 70% of repetitive business operations — so you stop paying for problems that could have been prevented and start investing in technology that drives real, lasting ROI.
-                  </p>
+
+                  <div className="mt-4">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                      Select your primary focus:
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {SERVICE_OPTIONS.map((pill) => {
+                        const isSelected = selectedService === pill;
+                        return (
+                          <button
+                            key={pill}
+                            type="button"
+                            onClick={() => setSelectedService(pill)}
+                            className={`inline-flex items-center gap-1.5 text-xs font-semibold rounded-full px-3 py-1 transition-all ${
+                              isSelected
+                                ? "bg-brand-blue text-white shadow-xs"
+                                : "bg-white border border-black/10 text-ink-900 hover:border-brand-blue/50"
+                            }`}
+                          >
+                            <CheckCircle2
+                              size={12}
+                              className={isSelected ? "text-white" : "text-slate-400"}
+                            />
+                            {pill}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-3.5 px-7 py-6 sm:px-8">
+                <form onSubmit={handleSubmit} className="space-y-3 px-7 py-5 sm:px-8 bg-white">
                   <input
                     type="text"
                     name="website"
@@ -113,7 +174,6 @@ export default function FearPopup() {
                     className="hidden"
                     aria-hidden="true"
                   />
-                  <p className="text-sm font-semibold">Claim your free consultation</p>
 
                   <div>
                     <label htmlFor="popup-name" className="sr-only">
@@ -125,7 +185,7 @@ export default function FearPopup() {
                       name="name"
                       required
                       placeholder="Full name"
-                      className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                      className="w-full rounded-xl border border-black/10 bg-subtle px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue focus:bg-white"
                     />
                   </div>
                   <div>
@@ -138,7 +198,7 @@ export default function FearPopup() {
                       name="email"
                       required
                       placeholder="Work email"
-                      className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                      className="w-full rounded-xl border border-black/10 bg-subtle px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue focus:bg-white"
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
@@ -147,19 +207,19 @@ export default function FearPopup() {
                       name="phone"
                       placeholder="Phone (optional)"
                       aria-label="Phone (optional)"
-                      className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                      className="w-full rounded-xl border border-black/10 bg-subtle px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue focus:bg-white"
                     />
                     <input
                       type="text"
                       name="company"
-                      placeholder="Company (optional)"
-                      aria-label="Company (optional)"
-                      className="w-full rounded-lg border border-black/10 bg-transparent px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue dark:border-white/15"
+                      placeholder="Company / Project"
+                      aria-label="Company / Project"
+                      className="w-full rounded-xl border border-black/10 bg-subtle px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-brand-blue focus:bg-white"
                     />
                   </div>
 
                   {status === "error" && (
-                    <p role="alert" className="text-sm font-medium text-red-500">
+                    <p role="alert" className="text-xs font-medium text-red-500">
                       {errorMsg}
                     </p>
                   )}
@@ -167,23 +227,32 @@ export default function FearPopup() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="btn-brand w-full disabled:cursor-not-allowed disabled:opacity-70"
+                    className="btn-brand w-full py-3 text-xs font-bold tracking-wide shadow-md disabled:cursor-not-allowed disabled:opacity-70 justify-center mt-1"
                   >
                     {status === "submitting" ? (
                       <>
-                        <Loader2 size={16} className="animate-spin" /> Sending...
+                        <Loader2 size={16} className="animate-spin" /> Preparing Roadmap...
                       </>
                     ) : (
-                      "Get a free audit"
+                      <>
+                        Get Free Product Roadmap
+                        <ArrowRight size={14} />
+                      </>
                     )}
                   </button>
-                  <button
-                    type="button"
-                    onClick={dismiss}
-                    className="w-full text-center text-xs text-muted underline-offset-2 hover:underline"
-                  >
-                    No thanks, I&apos;ll risk it
-                  </button>
+
+                  <div className="flex items-center justify-between pt-1">
+                    <span className="text-[11px] text-muted">
+                      ✓ 24hr turnaround • Senior leads only
+                    </span>
+                    <button
+                      type="button"
+                      onClick={dismiss}
+                      className="text-xs text-muted hover:text-ink-900 transition-colors"
+                    >
+                      No thanks, I&apos;ll explore
+                    </button>
+                  </div>
                 </form>
               </div>
             )}
