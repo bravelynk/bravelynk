@@ -38,19 +38,23 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    await resend.emails.send({
-      from: MAIL_FROM,
-      to: email,
-      subject: "Booking received — Bravelynk Digital Solutions",
-      html: `
-        <p>Hi ${escapeHtml(name)},</p>
-        <p>We've received your booking request for <strong>${escapeHtml(service)}</strong> on <strong>${escapeHtml(
-        date
-      )}</strong> at <strong>${escapeHtml(time)}</strong>.</p>
-        <p>Our team will confirm your slot by email or phone shortly. If anything changes, just reply to this email.</p>
-        <p>— The Bravelynk Team</p>
-      `,
-    });
+    try {
+      await resend.emails.send({
+        from: MAIL_FROM,
+        to: email,
+        subject: "Booking received — Bravelynk Digital Solutions",
+        html: `
+          <p>Hi ${escapeHtml(name)},</p>
+          <p>We've received your booking request for <strong>${escapeHtml(service)}</strong> on <strong>${escapeHtml(
+          date
+        )}</strong> at <strong>${escapeHtml(time)}</strong>.</p>
+          <p>Our team will confirm your slot by email or phone shortly. If anything changes, just reply to this email.</p>
+          <p>— The Bravelynk Team</p>
+        `,
+      });
+    } catch (confirmationError) {
+      console.warn("Client confirmation email could not be sent:", confirmationError);
+    }
 
     return NextResponse.json({ ok: true });
   } catch (error) {

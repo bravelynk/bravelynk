@@ -365,8 +365,8 @@ export default function Home() {
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
                 className={`rounded-full px-4 py-2 text-xs font-semibold transition-all ${selectedCategory === cat
-                    ? "bg-brand-blue text-white shadow-soft"
-                    : "bg-white text-ink-900/80 border border-black/10 hover:border-brand-blue/30"
+                  ? "bg-brand-blue text-white shadow-soft"
+                  : "bg-white text-ink-900/80 border border-black/10 hover:border-brand-blue/30"
                   }`}
               >
                 {cat}
@@ -517,8 +517,8 @@ export default function Home() {
                   <div
                     onClick={() => setActiveProcessTab(idx)}
                     className={`card-surface h-full rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer border ${isSelected
-                        ? "border-brand-blue shadow-soft ring-2 ring-brand-blue/15 bg-brand-light/30"
-                        : "border-black/5 hover:border-black/15 hover:shadow-card bg-white"
+                      ? "border-brand-blue shadow-soft ring-2 ring-brand-blue/15 bg-brand-light/30"
+                      : "border-black/5 hover:border-black/15 hover:shadow-card bg-white"
                       }`}
                   >
                     <div>
@@ -528,8 +528,8 @@ export default function Home() {
                         </span>
                         <div
                           className={`flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${isSelected
-                              ? "bg-brand-blue text-white"
-                              : "bg-brand-light text-brand-blue"
+                            ? "bg-brand-blue text-white"
+                            : "bg-brand-light text-brand-blue"
                             }`}
                         >
                           <StepIcon size={20} />

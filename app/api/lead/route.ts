@@ -31,17 +31,21 @@ export async function POST(req: NextRequest) {
     });
 
     // Confirmation email to the lead
-    await resend.emails.send({
-      from: MAIL_FROM,
-      to: email,
-      subject: "Your Free Architecture & Scoping Session — Bravelynk",
-      html: `
-        <p>Hi ${escapeHtml(name || "there")},</p>
-        <p>Thanks for requesting a complimentary Architecture &amp; Scoping Session with Bravelynk Digital Solutions Limited. A member of our technical architecture team will review your details and reach out within one business day with initial insights and scheduling options.</p>
-        <p>In the meantime, feel free to reply directly to this email with any product briefs, specs, or questions.</p>
-        <p>— The Bravelynk Engineering Team</p>
-      `,
-    });
+    try {
+      await resend.emails.send({
+        from: MAIL_FROM,
+        to: email,
+        subject: "Your Free Architecture & Scoping Session — Bravelynk",
+        html: `
+          <p>Hi ${escapeHtml(name || "there")},</p>
+          <p>Thanks for requesting a complimentary Architecture &amp; Scoping Session with Bravelynk Digital Solutions Limited. A member of our technical architecture team will review your details and reach out within one business day with initial insights and scheduling options.</p>
+          <p>In the meantime, feel free to reply directly to this email with any product briefs, specs, or questions.</p>
+          <p>— The Bravelynk Engineering Team</p>
+        `,
+      });
+    } catch (confirmationError) {
+      console.warn("Client confirmation email could not be sent:", confirmationError);
+    }
 
     return NextResponse.json({ ok: true });
   } catch (error) {
