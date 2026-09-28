@@ -7,16 +7,14 @@ import {
   Mail,
   MapPin,
   Phone,
-  Calendar,
   Sparkles,
   ChevronDown,
   Building2,
-  Clock,
-  ShieldCheck,
 } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import { useBooking } from "@/components/BookingProvider";
 import { siteConfig } from "@/lib/data";
+import HeroBackground from "@/components/HeroBackground";
 
 const faqs = [
   {
@@ -46,167 +44,173 @@ export default function ContactUsPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <div className="pt-36 pb-24 overflow-hidden">
-      {/* ── Breadcrumb ── */}
-      <div className="container-lynk mb-8">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-brand-blue transition-colors"
-        >
-          <ArrowLeft size={16} />
-          Back to Home
-        </Link>
-      </div>
+    <div className="relative pt-36 pb-28 overflow-hidden bg-[#0C0C0C] text-white min-h-screen">
+      {/* ── Ambient Radial Lighting & Cyber Grid Background ── */}
+      <HeroBackground />
 
-      {/* ── Header ── */}
-      <section className="container-lynk mb-16">
-        <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full bg-brand-light px-3.5 py-1.5 text-xs font-semibold text-brand-blue mb-4">
-            <Sparkles size={14} />
-            Contact Bravelynk
-          </span>
-          <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tight text-ink-900 leading-[1.12] mb-4">
-            There&apos;s no limit to what you can <span className="gradient-text">Build.</span>
-          </h1>
-          <p className="text-muted text-base sm:text-lg leading-relaxed">
-            Do you have an idea or business challenge? Let&apos;s work together to engineer it into durable, scalable technology.
-          </p>
+      <div className="relative z-10">
+        {/* ── Breadcrumb ── */}
+        <div className="container-lynk mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm font-mono text-slate-400 hover:text-white transition-colors"
+          >
+            <ArrowLeft size={16} />
+            Back to Home
+          </Link>
         </div>
-      </section>
 
-      {/* ── Form & Coordinates Grid ── */}
-      <section className="container-lynk mb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Coordinates Column */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="rounded-3xl border border-black/5 bg-white p-8 shadow-soft">
-              <h2 className="font-display text-xl font-bold text-ink-900 mb-6">Lagos Headquarters</h2>
+        {/* ── Header ── */}
+        <section className="container-lynk mb-16">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1 text-xs font-mono text-slate-300 mb-4">
+              <Sparkles size={14} className="text-brand-skyblue" />
+              <span>CONTACT BRAVELYNK</span>
+            </div>
+            <h1 className="font-kanit font-black text-4xl sm:text-6xl uppercase tracking-tight text-white leading-[1.05] mb-5">
+              <span className="jack-hero-gradient block sm:inline">There&apos;s No Limit To What You Can </span>
+              <span className="jack-hero-accent">Build.</span>
+            </h1>
+            <p className="text-slate-400 text-base sm:text-lg leading-relaxed font-normal">
+              Do you have an idea, legacy system refactor, or complex engineering roadmap? Let&apos;s engineer it into durable, scalable technology.
+            </p>
+          </div>
+        </section>
 
-              <div className="space-y-6 text-sm">
-                <div className="flex items-start gap-3.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand-blue">
-                    <MapPin size={18} />
+        {/* ── Form & Coordinates Grid ── */}
+        <section className="container-lynk mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            {/* Coordinates Column */}
+            <div className="lg:col-span-5 space-y-8">
+              <div className="rounded-3xl border border-white/10 bg-[#121316]/90 p-8 shadow-2xl backdrop-blur-xl">
+                <h2 className="font-kanit font-black text-xl uppercase tracking-tight text-white mb-6">Lagos Headquarters</h2>
+
+                <div className="space-y-6 text-sm">
+                  <div className="flex items-start gap-3.5">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-skyblue border border-brand-blue/20">
+                      <MapPin size={18} />
+                    </div>
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-wider text-slate-400">Office Address</p>
+                      <p className="text-slate-200 leading-relaxed mt-1 font-medium">{siteConfig.location}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-bold text-ink-900">Office Address</p>
-                    <p className="text-muted leading-relaxed mt-0.5">{siteConfig.location}</p>
+
+                  <div className="flex items-start gap-3.5">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-skyblue border border-brand-blue/20">
+                      <Mail size={18} />
+                    </div>
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-wider text-slate-400">Email Inquiries</p>
+                      <a href={`mailto:${siteConfig.email}`} className="text-brand-skyblue hover:underline mt-1 block font-medium">
+                        {siteConfig.email}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-skyblue border border-brand-blue/20">
+                      <Phone size={18} />
+                    </div>
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-wider text-slate-400">Direct Telephone &amp; WhatsApp</p>
+                      <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="text-brand-skyblue hover:underline mt-1 block font-medium">
+                        {siteConfig.phone}
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand-blue">
-                    <Mail size={18} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-ink-900">Email Inquiries</p>
-                    <a href={`mailto:${siteConfig.email}`} className="text-brand-blue hover:underline">
-                      {siteConfig.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand-blue">
-                    <Phone size={18} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-ink-900">Direct Telephone &amp; WhatsApp</p>
-                    <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="text-brand-blue hover:underline">
-                      {siteConfig.phone}
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Direct Booking Card */}
-              <div className="mt-8 pt-6 border-t border-black/5">
-                <p className="text-xs font-bold uppercase tracking-wider text-ink-900 mb-2">Prefer a live video call?</p>
-                <p className="text-xs text-muted mb-4 leading-relaxed">
-                  Book a direct 30-minute virtual consultation with an engineering lead on our calendar.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => open()}
-                  className="btn-outline w-full py-2.5 text-xs font-semibold justify-center hover:bg-brand-blue hover:text-white hover:border-brand-blue"
-                >
-                  Schedule Virtual Meeting
-                </button>
-              </div>
-            </div>
-
-            {/* Our Locations card */}
-            <div className="rounded-3xl border border-black/5 bg-subtle p-8">
-              <h3 className="font-display font-bold text-base text-ink-900 mb-4 flex items-center gap-2">
-                <Building2 size={18} className="text-brand-blue" />
-                Our Operational Footprint
-              </h3>
-              <div className="space-y-3 text-xs text-muted">
-                {siteConfig.locations.map((loc) => (
-                  <div key={loc.country} className="pb-3 border-b border-black/5 last:border-b-0 last:pb-0">
-                    <p className="font-bold text-ink-900">{loc.country}</p>
-                    <p className="mt-0.5">{loc.address}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Form Column */}
-          <div id="start-build" className="lg:col-span-7">
-            <div className="mb-6">
-              <h2 className="font-display text-2xl font-bold text-ink-900">Start a Project</h2>
-              <p className="text-muted text-sm mt-1">
-                Tell us about your project requirements and expected timeline. We respond within one business day.
-              </p>
-            </div>
-            <ContactForm />
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ SECTION ── */}
-      <section className="py-20 bg-subtle border-t border-black/5">
-        <div className="container-lynk max-w-4xl">
-          <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-blue mb-2 block">
-              HAVE QUESTIONS?
-            </span>
-            <h2 className="font-display text-3xl font-bold text-ink-900">
-              Frequently Asked Questions
-            </h2>
-          </div>
-
-          <div className="space-y-3">
-            {faqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div
-                  key={faq.q}
-                  className="rounded-2xl border border-black/5 bg-white overflow-hidden transition-all"
-                >
+                {/* Direct Booking Card */}
+                <div className="mt-8 pt-6 border-t border-white/10">
+                  <p className="text-xs font-mono font-semibold uppercase tracking-wider text-white mb-2">Prefer a live video call?</p>
+                  <p className="text-xs text-slate-400 mb-4 leading-relaxed font-normal">
+                    Book a direct 30-minute virtual consultation with an engineering lead on our calendar.
+                  </p>
                   <button
                     type="button"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-display font-semibold text-sm sm:text-base text-ink-900"
+                    onClick={() => open()}
+                    className="w-full py-2.5 text-xs font-semibold rounded-full border border-white/15 bg-white/[0.04] text-white hover:bg-brand-blue hover:border-brand-blue transition-all"
                   >
-                    <span>{faq.q}</span>
-                    <ChevronDown
-                      size={18}
-                      className={`shrink-0 text-muted transition-transform duration-200 ${isOpen ? "rotate-180 text-brand-blue" : ""
-                        }`}
-                    />
+                    Schedule Virtual Meeting
                   </button>
-                  {isOpen && (
-                    <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-muted leading-relaxed border-t border-black/5 bg-brand-light/20">
-                      {faq.a}
-                    </div>
-                  )}
                 </div>
-              );
-            })}
+              </div>
+
+              {/* Our Locations card */}
+              <div className="rounded-3xl border border-white/10 bg-[#121316]/70 p-8 backdrop-blur-xl">
+                <h3 className="font-kanit font-bold text-base text-white mb-4 flex items-center gap-2 uppercase tracking-wide">
+                  <Building2 size={18} className="text-brand-skyblue" />
+                  Our Operational Footprint
+                </h3>
+                <div className="space-y-3 text-xs text-slate-400">
+                  {siteConfig.locations.map((loc) => (
+                    <div key={loc.country} className="pb-3 border-b border-white/10 last:border-b-0 last:pb-0">
+                      <p className="font-bold text-white font-mono">{loc.country}</p>
+                      <p className="mt-0.5">{loc.address}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Form Column */}
+            <div id="start-build" className="lg:col-span-7">
+              <div className="mb-6">
+                <h2 className="font-kanit font-black text-2xl uppercase tracking-tight text-white">Start a Project</h2>
+                <p className="text-slate-400 text-sm mt-1">
+                  Tell us about your project requirements and expected timeline. We review every submission and reply within one business day.
+                </p>
+              </div>
+              <ContactForm dark={true} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* ── FAQ SECTION ── */}
+        <section className="py-20 border-t border-white/10 bg-[#090A0E]/80 backdrop-blur-md">
+          <div className="container-lynk max-w-4xl">
+            <div className="text-center mb-14">
+              <span className="text-xs font-mono font-semibold uppercase tracking-[0.25em] text-brand-skyblue mb-2 block">
+                HAVE QUESTIONS?
+              </span>
+              <h2 className="font-kanit font-black text-3xl sm:text-4xl uppercase tracking-tight text-white">
+                Frequently Asked Questions
+              </h2>
+            </div>
+
+            <div className="space-y-3">
+              {faqs.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div
+                    key={faq.q}
+                    className="rounded-2xl border border-white/10 bg-[#121316]/90 overflow-hidden transition-all backdrop-blur-xl"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-kanit font-semibold text-base sm:text-lg text-white"
+                    >
+                      <span>{faq.q}</span>
+                      <ChevronDown
+                        size={18}
+                        className={`shrink-0 text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180 text-brand-skyblue" : ""
+                          }`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/10 bg-white/[0.02]">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

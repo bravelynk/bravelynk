@@ -20,8 +20,16 @@ const config: Config = {
           800: "#101B30",
           700: "#1B2B45",
         },
+        dark: {
+          bg: "#0C0C0C",
+          surface: "#121316",
+          card: "#17181D",
+          border: "rgba(255, 255, 255, 0.08)",
+          subtle: "#1F2128",
+        },
       },
       fontFamily: {
+        kanit: ["Kanit", "sans-serif"],
         sans: [
           "-apple-system",
           "BlinkMacSystemFont",
@@ -33,12 +41,11 @@ const config: Config = {
           "sans-serif",
         ],
         display: [
+          "Kanit",
           "'Segoe UI'",
           "-apple-system",
           "Inter",
           "Roboto",
-          "'Helvetica Neue'",
-          "Arial",
           "sans-serif",
         ],
       },

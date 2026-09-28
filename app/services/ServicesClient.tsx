@@ -15,6 +15,7 @@ import {
 import { useBooking } from "@/components/BookingProvider";
 import { services } from "@/lib/data";
 import ScrollReveal from "@/components/ScrollReveal";
+import HeroBackground from "@/components/HeroBackground";
 
 const serviceIcons = [Smartphone, Cpu, Server, Laptop];
 
@@ -22,25 +23,16 @@ export default function ServicesClient() {
   const { open } = useBooking();
 
   return (
-    <article className="relative overflow-hidden pb-24 pt-36">
-      {/* Background decoration */}
-      <div
-        className="pointer-events-none absolute -top-40 right-[-10%] h-[400px] w-[400px] rounded-full opacity-35 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(1,140,255,0.2), transparent 70%)" }}
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute bottom-10 left-[-10%] h-[350px] w-[350px] rounded-full opacity-20 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(1,101,255,0.15), transparent 70%)" }}
-        aria-hidden="true"
-      />
+    <article className="relative overflow-hidden pb-28 pt-36 bg-[#0C0C0C] text-white min-h-screen">
+      {/* ── Ambient Radial Lighting & Cyber Grid Background ── */}
+      <HeroBackground />
 
-      <div className="container-lynk relative">
+      <div className="container-lynk relative z-10">
         {/* Breadcrumb */}
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-brand-blue transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-mono text-slate-400 hover:text-white transition-colors"
           >
             <ArrowLeft size={16} />
             Back to Home
@@ -48,16 +40,17 @@ export default function ServicesClient() {
         </div>
 
         {/* Header section */}
-        <header className="mb-16 border-b border-black/5 pb-8 max-w-3xl">
-          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-blue">
-            <Sparkles size={13} />
-            Our Core Services
-          </span>
-          <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-4 text-ink-900">
-            Four core service pillars. <span className="gradient-text">One accountable team.</span>
+        <header className="mb-16 border-b border-white/10 pb-10 max-w-3xl">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1 text-xs font-mono text-slate-300">
+            <Sparkles size={13} className="text-brand-skyblue" />
+            <span>OUR CORE CAPABILITIES</span>
+          </div>
+          <h1 className="font-kanit font-black text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tight leading-[1.05] mb-5 text-white">
+            <span className="jack-hero-gradient block sm:inline">Four Core Pillars. </span>
+            <span className="jack-hero-accent">One Accountable Team.</span>
           </h1>
-          <p className="text-muted text-base leading-relaxed sm:text-lg">
-            Bravelynk Digital Solutions designs and develops modern websites, web and mobile applications, AI-powered solutions, and reliable backend systems for businesses and organizations.
+          <p className="text-slate-400 text-base sm:text-lg leading-relaxed font-normal">
+            Bravelynk Digital Solutions designs and develops modern websites, web &amp; mobile applications, AI-powered workflows, and reliable backend cloud systems for businesses and organizations.
           </p>
         </header>
 
@@ -69,33 +62,33 @@ export default function ServicesClient() {
               <ScrollReveal key={s.id} delay={i * 0.08}>
                 <div
                   id={s.id}
-                  className="card-surface group flex h-full flex-col justify-between rounded-3xl p-8 sm:p-10 transition-all duration-300 hover:shadow-xl border border-black/10 bg-white hover:border-brand-blue/30"
+                  className="group flex h-full flex-col justify-between rounded-3xl p-8 sm:p-10 transition-all duration-300 border border-white/10 bg-[#121316]/90 backdrop-blur-xl hover:border-brand-skyblue/40 hover:shadow-[0_0_35px_rgba(1,101,255,0.2)]"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-8">
-                      <span className="font-mono text-3xl sm:text-4xl font-bold text-black/15 group-hover:text-brand-blue/30 transition-colors">
+                      <span className="font-kanit text-3xl sm:text-4xl font-black text-white/15 group-hover:text-brand-skyblue/40 transition-colors">
                         {s.number}
                       </span>
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-light text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all shadow-xs">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-blue/15 text-brand-skyblue border border-brand-blue/20 group-hover:bg-brand-blue group-hover:text-white transition-all shadow-xs">
                         <Icon size={26} />
                       </div>
                     </div>
 
-                    <h2 className="font-display text-2xl sm:text-3xl font-bold text-ink-900 mb-3 group-hover:text-brand-blue transition-colors">
+                    <h2 className="font-kanit text-2xl sm:text-3xl font-bold uppercase tracking-tight text-white mb-3 group-hover:text-brand-skyblue transition-colors">
                       {s.title}
                     </h2>
-                    <p className="text-muted text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                    <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6 font-normal">
                       {s.desc}
                     </p>
 
-                    <div className="border-t border-black/5 pt-6 mb-6">
-                      <p className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-4">
+                    <div className="border-t border-white/10 pt-6 mb-6">
+                      <p className="text-xs font-mono font-semibold uppercase tracking-wider text-brand-skyblue mb-4">
                         Key Capabilities
                       </p>
                       <ul className="space-y-3">
                         {s.points.map((p) => (
-                          <li key={p} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-900/85">
-                            <CheckCircle2 size={16} className="text-brand-blue shrink-0 mt-0.5" />
+                          <li key={p} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                            <CheckCircle2 size={16} className="text-brand-skyblue shrink-0 mt-0.5" />
                             <span className="leading-snug">{p}</span>
                           </li>
                         ))}
@@ -105,11 +98,11 @@ export default function ServicesClient() {
 
                   <div>
                     {s.techStack && (
-                      <div className="flex flex-wrap gap-1.5 mb-6 pt-4 border-t border-black/5">
+                      <div className="flex flex-wrap gap-1.5 mb-6 pt-4 border-t border-white/10">
                         {s.techStack.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-md bg-subtle px-2.5 py-1 text-[11px] font-medium text-ink-900/70 border border-black/5"
+                            className="rounded-lg bg-white/[0.05] px-2.5 py-1 text-[11px] font-mono text-slate-300 border border-white/10"
                           >
                             {tech}
                           </span>
@@ -117,18 +110,18 @@ export default function ServicesClient() {
                       </div>
                     )}
 
-                    <div className="pt-4 border-t border-black/5 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+                    <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
                       <button
                         type="button"
                         onClick={() => open(s.id)}
-                        className="btn-brand text-xs px-5 py-3 flex-1 justify-center"
+                        className="py-3 px-5 text-xs font-semibold rounded-full bg-gradient-to-r from-brand-blue to-brand-skyblue text-white shadow-[0_0_20px_rgba(1,101,255,0.4)] hover:shadow-[0_0_30px_rgba(1,101,255,0.6)] hover:scale-[1.01] active:scale-[0.99] transition-all flex-1 inline-flex items-center justify-center gap-2"
                       >
                         Start a Project with this Service
                         <ArrowRight size={14} />
                       </button>
                       <Link
                         href="/contact-us"
-                        className="btn-outline text-xs px-5 py-3 justify-center"
+                        className="py-3 px-5 text-xs font-semibold rounded-full border border-white/15 bg-white/[0.04] text-white hover:bg-white/10 transition-colors inline-flex items-center justify-center gap-1.5"
                       >
                         Enquire
                         <ArrowUpRight size={14} />
@@ -143,30 +136,30 @@ export default function ServicesClient() {
 
         {/* CTA Banner */}
         <section className="mt-20">
-          <div className="relative overflow-hidden rounded-3xl bg-brand-navy px-8 py-16 text-center text-white sm:px-16 sm:py-20 shadow-xl">
+          <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-b from-[#14151B] to-[#0A0B0E] px-8 py-16 text-center text-white sm:px-16 sm:py-20 shadow-2xl">
             <div
               className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full opacity-30 blur-3xl"
               style={{ background: "radial-gradient(circle, rgba(1,140,255,0.5), transparent 70%)" }}
               aria-hidden="true"
             />
-            <h2 className="font-display relative mx-auto max-w-2xl text-3xl font-bold sm:text-4xl">
+            <h2 className="font-kanit font-black relative mx-auto max-w-2xl text-3xl sm:text-4xl uppercase tracking-tight">
               Not sure which capability fits your current challenge?
             </h2>
-            <p className="relative mx-auto mt-4 max-w-lg text-sm text-white/75 sm:text-base">
+            <p className="relative mx-auto mt-4 max-w-lg text-sm text-slate-400 sm:text-base leading-relaxed">
               Start with an exploratory technical discovery call. We will review your goals, architecture, and timeline.
             </p>
             <div className="relative mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <button
                 type="button"
                 onClick={() => open()}
-                className="btn-brand bg-white text-brand-navy hover:bg-brand-light py-3.5 px-8 text-sm font-bold"
+                className="py-3.5 px-8 text-sm font-bold rounded-full bg-white text-ink-900 hover:bg-slate-100 transition-all shadow-md inline-flex items-center gap-2"
               >
                 Start a Project
                 <ArrowRight size={16} />
               </button>
               <Link
                 href="/contact-us"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 hover:border-white/40"
               >
                 Contact Lagos Office
               </Link>

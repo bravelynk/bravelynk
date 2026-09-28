@@ -41,10 +41,6 @@ export default function Footer() {
                 <ArrowUpRight size={12} />
               </a>
 
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Available for New Projects</span>
-              </div>
             </div>
           </div>
 

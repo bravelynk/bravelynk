@@ -49,6 +49,8 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
+  const isDark = true;
+
   return (
     <>
       <a href="#main-content" className="skip-link">
@@ -57,7 +59,7 @@ export default function Navbar() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "border-b border-black/5 bg-white/90 backdrop-blur-md shadow-xs"
+            ? "border-b border-white/10 bg-[#0C0C0C]/85 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             : "bg-transparent"
         }`}
       >
@@ -74,7 +76,7 @@ export default function Navbar() {
               priority
               className="h-9 w-9 rounded-md object-contain transition-transform group-hover:scale-105"
             />
-            <span className="font-display text-[17px] font-bold tracking-tight text-ink-900">
+            <span className="font-kanit text-[18px] font-bold tracking-tight text-white transition-colors">
               Bravelynk
             </span>
           </Link>
@@ -86,8 +88,10 @@ export default function Navbar() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className={`text-[13.5px] font-medium transition-colors hover:text-brand-blue ${
-                    isActive ? "text-brand-blue font-semibold" : "text-ink-900/80"
+                  className={`text-[13.5px] font-medium transition-colors ${
+                    isActive
+                      ? "text-brand-skyblue font-semibold"
+                      : "text-slate-300 hover:text-white"
                   }`}
                 >
                   {l.label}
@@ -100,7 +104,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => open()}
-              className="btn-brand py-2.5 px-5 text-xs font-semibold tracking-wide"
+              className="py-2.5 px-5 text-xs font-semibold tracking-wide rounded-full inline-flex items-center gap-2 transition-all duration-200 active:scale-95 bg-gradient-to-r from-brand-blue to-brand-skyblue text-white shadow-[0_0_20px_rgba(1,101,255,0.4)] hover:shadow-[0_0_30px_rgba(1,101,255,0.6)] hover:scale-105"
             >
               Start a Project
               <ArrowRight size={14} />
@@ -115,7 +119,7 @@ export default function Navbar() {
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white shadow-xs"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white hover:bg-white/20 transition-colors"
             >
               {menuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -135,7 +139,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-0 top-[72px] z-40 border-b border-black/5 bg-white/98 px-5 pb-8 pt-6 shadow-xl backdrop-blur-xl lg:hidden"
+            className="fixed inset-x-0 top-[72px] z-40 border-b px-5 pb-8 pt-6 shadow-2xl backdrop-blur-2xl lg:hidden border-white/10 bg-[#0C0C0C]/95 text-white"
           >
             <div className="flex flex-col gap-1">
               {NAV_LINKS.map((l) => {
@@ -147,8 +151,8 @@ export default function Navbar() {
                     onClick={() => setMenuOpen(false)}
                     className={`rounded-lg px-3.5 py-3 text-base font-medium transition-colors ${
                       isActive
-                        ? "bg-brand-light text-brand-blue font-semibold"
-                        : "text-ink-900 hover:bg-brand-light"
+                        ? "bg-white/10 text-brand-skyblue font-semibold"
+                        : "text-slate-300 hover:bg-white/5 hover:text-white"
                     }`}
                   >
                     {l.label}
